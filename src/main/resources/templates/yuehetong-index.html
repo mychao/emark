@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>E标</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1, user-scalable=no"/>
+    <meta name="applicable-device" content="pc,mobile"/>
+    <meta name="description" content="标牌"/>
+    <meta name="keywords" content="标牌"/>
+    <meta name="author" content="mychao "/>
+    <link rel="icon" href="../favicon.ico"/>
+    <link href="../media/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../media/Font-Awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="../media/css/main.min.css" rel="stylesheet"/>
+</head>
+<body style='background:#f5f5f5;'>
+<nav class="nav">
+    <div class='container nav-top-cont'>
+        <div class="navbar-header">
+            <a class="logo1" href="http://e.aanp.cn">
+                <h1>E标</h1></a>
+            <span class='split'>&nbsp;</span>
+            <span class="logo2">标牌生产从此简单</span>
+        </div>
+
+        <div id="navbar-menu">
+            <a href='#' class='btn'>连接1</a>
+            <a href='#' class='btn'>连接2</a>
+            <a href='javascript:toggleMore();' class='btn' id='top-nav-bt'><i class="fa fa-bars" aria-hidden="true"></i></a>
+		  <span id='nav-login-area'>
+                <span class='split'>&nbsp;</span>
+                <script>hasLogin = false;</script>
+                  <a href='#' class='btn' data-toggle="modal" data-target="#modalLogin">登录</a>
+                  <a href='#' class='btn' data-toggle="modal" data-target="#modalReg">注册</a>
+          </span>
+        </div>
+    </div>
+</nav>
+<div class="search-index">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12 s-inner">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="热门搜索：电源指示，开关，上下" id='search-key'/>
+			<span class="input-group-btn">
+			<a class="btn" id='s-i-bt' href='javascript:search();' role="button"></a>
+			</span>
+        </div><!-- /input-group -->
+    </div>
+</div>
+
+<div class="container index-body">
+    <div class="row">
+        <!-- i-c-g index contract group -->
+        <div class='col-md-12 i-c-g'>
+
+            <!-- 标准版 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/interest' title='标准版'>
+                        <div class='i-c-p i-c-p2'>
+                            <h2 class='i-c-ph'>标准版</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/chuzixieyi' title='出资协议'>出资协议</a></li>-->
+                        <!--<li><a href='/diy/shoujuzhuangu' title='收据（转股）'>收据（转股）</a></li>-->
+                        <!--<li><a href='/diy/guquanzhuanrangxieyi' title='股权转让协议'>股权转让协议</a></li>-->
+                        <!--<li><a href='/diy/gudonghuijueyizengzi' title='股东会决议（增资）'>股东会决议（增资）</a></li>-->
+                    <!--</ul>-->
+                    <!--<a href='/contract/interest' class='more-bt'>更多></a>--></div>
+            </div><!-- 知识产权 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/cp' title='知识产权相关协议'>
+                        <div class='i-c-p i-c-p7'>
+                            <h2 class='i-c-ph'>知识产权</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/zhuanlijishuxukehetong' title='专利技术许可合同'>专利技术许可合同</a></li>-->
+                        <!--<li><a href='/diy/zhuanlizhuanranghetong' title='专利转让合同'>专利转让合同</a></li>-->
+                        <!--<li><a href='/diy/shangbiaoxukeshiyonghetong' title='商标许可使用合同'>商标许可使用合同</a></li>-->
+                        <!--<li><a href='/diy/shangbiaozhuanranghetong' title='商标转让合同'>商标转让合同</a></li>-->
+                    <!--</ul>-->
+                    <!--<a href='/contract/cp' class='more-bt'>更多></a>--></div>
+            </div><!-- 人事 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/hr' title='人事相关协议'>
+                        <div class='i-c-p i-c-p5'>
+                            <h2 class='i-c-ph'>人事</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/zaizhizhishichanquanhetong' title='在职知识产权合同'>在职知识产权合同</a></li>-->
+                        <!--<li><a href='/diy/laodonghetong' title='劳动合同'>劳动合同</a></li>-->
+                        <!--<li><a href='/diy/lizhixieyi' title='离职协议'>离职协议</a></li>-->
+                        <!--<li><a href='/diy/lizhizhengming' title='离职证明'>离职证明</a></li>-->
+                    <!--</ul>-->
+                    <!--<a href='/contract/hr' class='more-bt'>更多></a>-->
+                </div>
+            </div><!-- 金融 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/finance' title='金融相关协议'>
+                        <div class='i-c-p i-c-p1'>
+                            <h2 class='i-c-ph'>金融</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/jiekuanhetong' title='借款合同'>借款合同</a></li>-->
+                        <!--<li><a href='/diy/shoujujiekuan' title='收据（借款）'>收据（借款）</a></li>-->
+                        <!--<li class='no-item'></li>-->
+                        <!--<li class='no-item'></li>-->
+                    <!--</ul>-->
+                </div>
+            </div><!-- 担保 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/guarantee' title='担保相关协议'>
+                        <div class='i-c-p i-c-p4'>
+                            <h2 class='i-c-ph'>担保</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/baozhenghetong' title='保证合同'>保证合同</a></li>-->
+                        <!--<li><a href='/diy/diyahetong' title='抵押合同'>抵押合同</a></li>-->
+                        <!--<li><a href='/diy/zhiyahetong' title='质押合同'>质押合同</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div><!-- 房地产 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/estate' title='房地产相关协议'>
+                        <div class='i-c-p i-c-p6'>
+                            <h2 class='i-c-ph'>房地产</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/shangpuzulinhetong' title='商铺租赁合同'>商铺租赁合同</a></li>-->
+                        <!--<li><a href='/diy/changdizulinhetongnongcun' title='场地租赁合同（农村）'>场地租赁合同（农村）</a></li>-->
+                        <!--<li><a href='/diy/zhanweizulinhetong' title='展位租赁合同'>展位租赁合同</a></li>-->
+                        <!--<li><a href='/diy/jianshegongchengchengbaohetong' title='建设工程承包合同'>建设工程承包合同</a></li>-->
+                    <!--</ul>-->
+                    <!--<a href='/contract/estate' class='more-bt'>更多></a>-->
+                </div>
+            </div><!-- 婚姻 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/marriage' title='婚姻相关协议'>
+                        <div class='i-c-p i-c-p3'>
+                            <h2 class='i-c-ph'>婚姻</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/fuqihunhoucaichanyuedingshu' title='夫妻婚后财产约定书'>夫妻婚后财产约定书</a></li>-->
+                        <!--<li><a href='/diy/fuyangquanxieyi' title='抚养权协议'>抚养权协议</a></li>-->
+                        <!--<li><a href='/diy/lihunxieyibiaozhunban' title='离婚协议（标准版）'>离婚协议（标准版）</a></li>-->
+                        <!--<li><a href='/diy/lihunxieyijianyiban' title='离婚协议（简易版）'>离婚协议（简易版）</a></li>-->
+                    <!--</ul>-->
+                    <!--<a href='/contract/marriage' class='more-bt'>更多></a>--></div>
+            </div><!-- 买卖 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/sale' title='买卖相关协议'>
+                        <div class='i-c-p i-c-p8'>
+                            <h2 class='i-c-ph'>买卖</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/ershoufangmaimaihetong' title='二手房买卖合同'>二手房买卖合同</a></li>-->
+                        <!--<li><a href='/diy/peiougongyouquanrentongyichushouzhengming' title='配偶（共有权人）同意出售证明'>配偶（共有权人）同意出售证明</a>-->
+                        <!--</li>-->
+                        <!--<li><a href='/diy/huowumaimaihetong' title='货物买卖合同'>货物买卖合同</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div><!-- 服务 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/service' title='服务相关协议'>
+                        <div class='i-c-p i-c-p9'>
+                            <h2 class='i-c-ph'>服务</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/qiyefuwudailihetong' title='企业服务代理合同'>企业服务代理合同</a></li>-->
+                        <!--<li><a href='/diy/qingdianfuwuhetong' title='庆典服务合同'>庆典服务合同</a></li>-->
+                        <!--<li><a href='/diy/wuyefuwuhetong' title='物业服务合同'>物业服务合同</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/service' title='服务相关协议'>
+                        <div class='i-c-p i-c-p9'>
+                            <h2 class='i-c-ph'>服务</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/qiyefuwudailihetong' title='企业服务代理合同'>企业服务代理合同</a></li>-->
+                        <!--<li><a href='/diy/qingdianfuwuhetong' title='庆典服务合同'>庆典服务合同</a></li>-->
+                        <!--<li><a href='/diy/wuyefuwuhetong' title='物业服务合同'>物业服务合同</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/service' title='服务相关协议'>
+                        <div class='i-c-p i-c-p9'>
+                            <h2 class='i-c-ph'>服务</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/qiyefuwudailihetong' title='企业服务代理合同'>企业服务代理合同</a></li>-->
+                        <!--<li><a href='/diy/qingdianfuwuhetong' title='庆典服务合同'>庆典服务合同</a></li>-->
+                        <!--<li><a href='/diy/wuyefuwuhetong' title='物业服务合同'>物业服务合同</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/service' title='服务相关协议'>
+                        <div class='i-c-p i-c-p9'>
+                            <h2 class='i-c-ph'>服务</h2>
+                        </div>
+                    </a>
+                    <!--<ul class='i-c-list'>-->
+                        <!--<li><a href='/diy/qiyefuwudailihetong' title='企业服务代理合同'>企业服务代理合同</a></li>-->
+                        <!--<li><a href='/diy/qingdianfuwuhetong' title='庆典服务合同'>庆典服务合同</a></li>-->
+                        <!--<li><a href='/diy/wuyefuwuhetong' title='物业服务合同'>物业服务合同</a></li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+            <div class='clearfix'></div>
+        </div>
+        <!-- end of i-c-g index contract group -->
+
+        <!-- i-t-g index topic group -->
+        <!--<div class='col-md-3 i-t-g'>-->
+
+            <!--<a class='col-md-12 col-sm-6 col-xs-6 i-g-item i-g-3' href='/topic/ipo' title='上市公司合同专题'>-->
+                <!--<h2 class='i-c-ph'>上市公司</h2>-->
+            <!--</a><a class='col-md-12 col-sm-6 col-xs-6 i-g-item i-g-1' href='/topic/startup' title='创业公司合同专题'>-->
+            <!--<h2 class='i-c-ph'>创业公司</h2>-->
+        <!--</a><a class='col-md-12 col-sm-6 col-xs-6 i-g-item i-g-2' href='/topic/graduate' title='毕业季合同专题'>-->
+            <!--<h2 class='i-c-ph'>毕业季</h2>-->
+        <!--</a>-->
+            <!--<div class='clearfix'></div>-->
+        <!--</div>-->
+        <!-- end of i-t-g index contract group -->
+
+    </div>
+</div>
+
+
+<footer>
+    <div class="container">
+        <p class='footer-menu'>
+            <a href='http://www.yuehetong.com/sitemap'>网站地图</a>
+        </p>
+        <p class='cp'>&copy; 悦合同 2016 <a href='http://www.yuehetong.com'>www.yuehetong.com</a> <span
+                style='display:inline-block;'> All Rights Reserved.</span>
+            <span style='display:inline-block;'> <a target="_blank" href="http://www.miibeian.gov.cn/" rel="nofollow">粤ICP备16004471号</a></span>
+        </p>
+    </div> <!-- /container -->
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">登录悦合同</h4>
+                <p>合同从此简单</p>
+            </div>
+
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" id='modalLoginErr'>
+                    <span id='modalLoginErrCont'></span>
+                </div>
+                <div class='form-group'>
+                    <input type="text" class="form-control" id="modal-login-name" placeholder='邮箱/手机号/昵称'/>
+                </div>
+                <div class='form-group'>
+                    <input type="password" class="form-control" id="modal-login-pwd" placeholder='密码'/>
+                </div>
+            </div><!-- modal-body -->
+
+            <div class="modal-footer">
+                <a role="button" href="javascript:login();" class="btn btn-login" data-loading-text="验证中...">登录</a>
+                <div class='modal-footer-tips'>
+                    <label style='float:left;'><input type="checkbox" id="chk-rmb" value="rmb" checked='checked'/> 下次自动登陆</label>
+                    <a href="javascript:switchToModal('reg');">没有账号？</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalReg" tabindex="-1" role="dialog" aria-labelledby="modalReg" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">加入悦合同</h4>
+                <p>合同从此简单</p>
+            </div>
+
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" id='modalRegErr'>
+                    <span id='modalRegErrCont'></span>
+                </div>
+
+                <div class='form-group'>
+                    <input type="text" class="form-control" id="modal-reg-name" placeholder='邮箱或手机号'/>
+                </div>
+
+
+                <!--<div class='form-group' id='reg-captcha'>-->
+                    <!--<input type="text" class="form-control" id="modal-reg-captcha" placeholder='验证码'/>-->
+                    <!--<a href='#' id='captcha-a'-->
+                       <!--onclick="document.getElementById('captcha').src='/account/captcha?rnd='+Math.random();captchaPass = false;"><img-->
+                            <!--src="/account/captcha?rnd=1470207392" id="captcha"/></a>-->
+                <!--</div>-->
+
+
+                <!--<div class='form-group' id='pcode-area'>-->
+                    <!--<input type="text" class="form-control" id="modal-reg-pcode" placeholder='输入手机验证码'/>-->
+                    <!--<button onclick='javascript:sendPCode("pcode-a","modal-reg-name");return false;' role='button'-->
+                            <!--class='btn' id='pcode-a' disabled='disabled'><span id='pcode-a-cd'>60</span> 秒后可以重新发送-->
+                    <!--</button>-->
+                <!--</div>-->
+                <div class='form-group'>
+                    <input type="password" class="form-control" id="modal-reg-pwd" placeholder='密码（不少于6位）'/>
+                </div>
+
+            </div><!-- modal-body -->
+
+            <div class="modal-footer">
+                <div id='reg-succ-tips'></div>
+                <a role="button" href="javascript:reg();" class="btn btn-reg" data-loading-text="注册中...">注册</a>
+                <div class='modal-footer-tips'>
+                    <a href="javascript:switchToModal('login');">已有账号？直接登陆</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<!-- query suggest -->
+<div id='query-sug-outer'>
+
+</div>
+<!-- end query suggest -->
+
+<!--<script src='../media/js/jquery-2.2.1.min.js'></script>-->
+<script src='../media/js/jquery-1.12.5.min.js'></script>
+<script src="../media/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!--[if lte IE 9]>
+<script src="../media/js/respond.min.js"></script>
+<script src="../media/js/html5shiv.js"></script>
+<![endif]-->
+<!--[if IE 10]>
+<script src="../media/bootstrap-3.3.6/js/ie10-viewport-bug-workaround.js"></script>
+<![endif]-->
+<script src="../media/js/common.min.js"></script>
+</body>
+</html>

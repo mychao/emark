@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>E标</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="renderer" content="webkit"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1, user-scalable=no"/>
+    <meta name="applicable-device" content="pc,mobile"/>
+    <meta name="description" content="标牌"/>
+    <meta name="keywords" content="标牌"/>
+    <meta name="author" content="mychao "/>
+    <link rel="icon" href="../favicon.ico"/>
+    <link href="../media/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../media/Font-Awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="../media/css/main.min.css" rel="stylesheet"/>
+</head>
+<body style='background:#f5f5f5;'>
+<nav class="nav">
+    <div class='container nav-top-cont'>
+        <div class="navbar-header">
+            <a class="logo1" href="http://e.aanp.cn">
+                <h1>E标</h1></a>
+            <span class='split'>&nbsp;</span>
+            <span class="logo2">标牌生产从此简单</span>
+        </div>
+
+        <div id="navbar-menu">
+            <a href='#' class='btn'>连接1</a>
+            <a href='#' class='btn'>连接2</a>
+            <a href='javascript:toggleMore();' class='btn' id='top-nav-bt'><i class="fa fa-bars" aria-hidden="true"></i></a>
+		  <span id='nav-login-area'>
+                <span class='split'>&nbsp;</span>
+                <script>hasLogin = false;</script>
+                  <a href='#' class='btn' data-toggle="modal" data-target="#modalLogin">登录</a>
+                  <a href='#' class='btn' data-toggle="modal" data-target="#modalReg">注册</a>
+          </span>
+        </div>
+    </div>
+</nav>
+<div class="search-index">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12 s-inner">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="热门搜索：电源指示，开关，上下" id='search-key'/>
+			<span class="input-group-btn">
+			<a class="btn" id='s-i-bt' href='javascript:search();' role="button"></a>
+			</span>
+        </div><!-- /input-group -->
+    </div>
+</div>
+
+<div class="container index-body">
+    <div class="row">
+        <!-- i-c-g index contract group -->
+        <div class='col-md-12 i-c-g'>
+
+            <!-- 标准版 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='#' title='标准版'>
+                        <div class='i-c-p i-c-p2'>
+                            <h2 class='i-c-ph'>标准版</h2>
+                        </div>
+                    </a>
+            </div>
+            </div><!-- 标准版 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='#' title='基础版'>
+                        <div class='i-c-p i-c-p7'>
+                            <h2 class='i-c-ph'>基础版</h2>
+                        </div>
+                    </a>
+                </div>
+            </div><!-- 基础版 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='#' title='豪华版'>
+                        <div class='i-c-p i-c-p5'>
+                            <h2 class='i-c-ph'>豪华版</h2>
+                        </div>
+                    </a>
+                </div>
+            </div><!-- 豪华版 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='#' title='长条E版'>
+                        <div class='i-c-p i-c-p1'>
+                            <h2 class='i-c-ph'>长条E版</h2>
+                        </div>
+                    </a>
+                </div>
+            </div><!-- 担保 -->
+            <div class='col-md-4 col-sm-6 col-xs-6 i-c-item-outer'>
+                <div class='i-c-item'>
+                    <a href='/contract/guarantee' title='简单版'>
+                        <div class='i-c-p i-c-p4'>
+                            <h2 class='i-c-ph'>简单版</h2>
+                        </div>
+                    </a>
+                </div>
+            </div><!-- 简单版 -->
+            <div class='clearfix'></div>
+        </div>
+        <!-- end of i-c-g index contract group -->
+    </div>
+</div>
+
+
+<footer>
+    <div class="container">
+        <p class='cp'>&copy; Emark 2016 <a href='#'>www.emark.com</a> <span
+                style='display:inline-block;'> All Rights Reserved.</span>
+            <span style='display:inline-block;'> <a target="_blank" href="#" rel="nofollow">沪ICP备000000号</a></span>
+        </p>
+    </div> <!-- /container -->
+</footer>
+
+<!-- Modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">登录</h4>
+                <p>E标生产从此简单</p>
+            </div>
+
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" id='modalLoginErr'>
+                    <span id='modalLoginErrCont'></span>
+                </div>
+                <div class='form-group'>
+                    <input type="text" class="form-control" id="modal-login-name" placeholder='邮箱/手机号'/>
+                </div>
+                <div class='form-group'>
+                    <input type="password" class="form-control" id="modal-login-pwd" placeholder='密码'/>
+                </div>
+            </div><!-- modal-body -->
+
+            <div class="modal-footer">
+                <a role="button" href="javascript:login();" class="btn btn-login" data-loading-text="验证中...">登录</a>
+                <div class='modal-footer-tips'>
+                    <label style='float:left;'><input type="checkbox" id="chk-rmb" value="rmb" checked='checked'/> 下次自动登陆</label>
+                    <a href="javascript:switchToModal('reg');">没有账号？</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalReg" tabindex="-1" role="dialog" aria-labelledby="modalReg" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">注册</h4>
+                <p>E标生产从此简单</p>
+            </div>
+
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissible fade in" role="alert" id='modalRegErr'>
+                    <span id='modalRegErrCont'></span>
+                </div>
+
+                <div class='form-group'>
+                    <input type="text" class="form-control" id="modal-reg-name" placeholder='邮箱或手机号'/>
+                </div>
+
+
+                <!--<div class='form-group' id='reg-captcha'>-->
+                    <!--<input type="text" class="form-control" id="modal-reg-captcha" placeholder='验证码'/>-->
+                    <!--<a href='#' id='captcha-a'-->
+                       <!--onclick="document.getElementById('captcha').src='/account/captcha?rnd='+Math.random();captchaPass = false;"><img-->
+                            <!--src="/account/captcha?rnd=1470207392" id="captcha"/></a>-->
+                <!--</div>-->
+
+
+                <!--<div class='form-group' id='pcode-area'>-->
+                    <!--<input type="text" class="form-control" id="modal-reg-pcode" placeholder='输入手机验证码'/>-->
+                    <!--<button onclick='javascript:sendPCode("pcode-a","modal-reg-name");return false;' role='button'-->
+                            <!--class='btn' id='pcode-a' disabled='disabled'><span id='pcode-a-cd'>60</span> 秒后可以重新发送-->
+                    <!--</button>-->
+                <!--</div>-->
+                <div class='form-group'>
+                    <input type="password" class="form-control" id="modal-reg-pwd" placeholder='密码（不少于6位）'/>
+                </div>
+
+            </div><!-- modal-body -->
+
+            <div class="modal-footer">
+                <div id='reg-succ-tips'></div>
+                <a role="button" href="javascript:reg();" class="btn btn-reg" data-loading-text="注册中...">注册</a>
+                <div class='modal-footer-tips'>
+                    <a href="javascript:switchToModal('login');">已有账号？直接登陆</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<!-- query suggest -->
+<div id='query-sug-outer'>
+
+</div>
+<!-- end query suggest -->
+
+<!--<script src='../media/js/jquery-2.2.1.min.js'></script>-->
+<script src='../media/js/jquery-1.12.5.min.js'></script>
+<script src="../media/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!--[if lte IE 9]>
+<script src="../media/js/respond.min.js"></script>
+<script src="../media/js/html5shiv.js"></script>
+<![endif]-->
+<!--[if IE 10]>
+<script src="../media/bootstrap-3.3.6/js/ie10-viewport-bug-workaround.js"></script>
+<![endif]-->
+<script src="../media/js/common.min.js"></script>
+</body>
+</html>
