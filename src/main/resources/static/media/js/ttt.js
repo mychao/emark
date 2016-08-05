@@ -1,3 +1,5 @@
+var siteUrl = "http://test.yuehetong.com";
+var scriptsUrl = "http://s2.yuehetong.com";
 var storage = null;
 if (window.localStorage) {
     var storage = window.localStorage
@@ -36,6 +38,17 @@ function setCookie(a, c) {
     d.setTime(d.getTime() + b * 24 * 60 * 60 * 1000);
     document.cookie = a + "=" + escape(c) + ";expires=" + d.toGMTString() + ";path=/"
 }
+function isFuncExist(funcName) {
+    try {
+        if (typeof(eval(funcName)) == "function") {
+            return true
+        } else {
+            return false
+        }
+    } catch (e) {
+    }
+    return false
+}
 var canLoginRegSubmit = true;
 function switchToModal(a) {
     if (a == "reg") {
@@ -71,12 +84,21 @@ function login() {
     if (d) {
         $.post("/account/check", {name: a, pwd: b, rmb: ($("#chk-rmb").prop("checked") ? 1 : 0)}, function (g) {
             if (g && g.r == 1) {
+                hasLogin = true;
                 var e = g.rdi;
                 var f = window.location.href;
-                if (e == "/" && f.indexOf("/account/login") < 0) {
-                    window.location.reload()
+                if (isFuncExist("loginCallBack")) {
+                    loginCallBack()
                 } else {
-                    window.location.href = e
+                    if (getQueryString("rdi")) {
+                        window.location.href = getQueryString("rdi")
+                    } else {
+                        if (e == "/" && f.indexOf("/account/login") < 0) {
+                            window.location.reload()
+                        } else {
+                            window.location.href = e
+                        }
+                    }
                 }
             } else {
                 if (g.msg && g.msg != "") {
@@ -86,8 +108,6 @@ function login() {
                 }
             }
         }, "json")
-    }else{
-        placeholderInit();
     }
 }
 function reg() {
@@ -196,7 +216,7 @@ function checkSameName() {
 function checkCaptcha() {
     var a = $(this).val();
     if (a.length == 4) {
-        $.post("/account/captcha/check", {captcha: a}, function (b) {
+        $.post(scriptsUrl + "captcha/check", {captcha: a}, function (b) {
             if (b.r != 1) {
                 $("#reg-captcha").append("<label class='lblerr' style='right:120px'>验证码出错</label>");
                 $("#captcha-a").click();
@@ -221,7 +241,7 @@ var initSec = 60;
 var isDelay = false;
 function sendPCode(b, a) {
     if (!isDelay && captchaPass && isPhone($.trim($("#" + a).val()))) {
-        $.post("/account/sendphonecode", {phone: $.trim($("#" + a).val())}, function (c) {
+        $.post(scriptsUrl + "sendphonecode", {phone: $.trim($("#" + a).val())}, function (c) {
             if (c && c.r == 1) {
                 isDelay = true;
                 setSendBtStatus(b)
@@ -260,7 +280,9 @@ $(function () {
         $("#modalLogin .form-group .lblerr").remove();
         $("#modalLogin .form-group input").val("");
         $("#modalLoginErr").hide();
-        $("#modalLoginErrCont").html("")
+        $("#modalLoginErrCont").html("");
+        $("#alertLoginTips").hide();
+        $("#alertLoginTipsCont").html("")
     });
     $("#modalReg").on("hide.bs.modal", function (a) {
         $("#modalReg .form-group .lblerr").remove();
@@ -296,7 +318,7 @@ $(function () {
         }
     });
     $(document).click(function (b) {
-        if ($(window).width() > 560) {
+        if ($(window).width() > 990) {
             return
         }
         if (b.target && b.target.id == "nav-login-area") {
@@ -450,12 +472,8 @@ function submitComment() {
 }
 var queryDom = null;
 $(function () {
-    if ($("#search-key2").length > 0) {
-        queryDom = $("#search-key2")
-    } else {
-        if ($("#search-key").length > 0) {
-            queryDom = $("#search-key")
-        }
+    if ($("#search-key").length > 0) {
+        queryDom = $("#search-key")
     }
     if (queryDom && queryDom.length > 0) {
         queryDom.keydown(function (a) {
@@ -468,6 +486,7 @@ $(function () {
             getQuerySug($(this).attr("id"))
         })
     }
+    $(".d-num").each(vibeNum)
 });
 function search() {
     var b = $.trim(queryDom.val());
@@ -497,14 +516,9 @@ function getQuerySugAct() {
     }
     var a = Date.parse(new Date()) / 1000;
     sugCurMark = a;
-    $.post("/api/suggest", {
-        'keyword': b,
-        'timestamp': "111111"
-    }, setQuerySug, "json")
-    //$.get("/query/suggest?wd=" + b + "&ts=" + sugCurMark, setQuerySug)
+    $.get("/query/suggest?wd=" + b + "&ts=" + sugCurMark, setQuerySug)
 }
 function setQuerySug(b) {
-    alert();
     if (b == "") {
         $("#query-sug-outer").css("left", "-1100px").html("");
         return
@@ -553,24 +567,38 @@ window.onresize = function () {
             chartArr[i].resize()
         }
     }
-    var a = $("#nav-login-area");
-    if (!a.is(":hidden")) {
-        if ($(window).width() > 560) {
-            a.css("display", "inline-block")
+    var b = $("#nav-login-area");
+    var c = $("#top-main-menu");
+    var a = $("#top-my-menu");
+    if ($(window).width() > 990) {
+        if (b.is(":hidden")) {
+            b.show().css("display", "inline-block")
         } else {
-            a.hide()
+            b.css("display", "inline-block")
         }
+        c.show();
+        a.hide()
     } else {
-        if ($(window).width() > 560) {
-            a.show().css("display", "inline-block")
-        }
+        b.hide();
+        c.hide();
+        a.show()
     }
     if (queryDom && queryDom.length > 0) {
         $("#query-sug-outer").width(queryDom.outerWidth());
-        var b = queryDom.offset().top + queryDom.outerHeight();
-        $("#query-sug-outer").css("top", b + "px").css("left", queryDom.offset().left + "px")
+        var d = queryDom.offset().top + queryDom.outerHeight();
+        $("#query-sug-outer").css("top", d + "px").css("left", queryDom.offset().left + "px")
     }
 };
+$(document).scroll(function () {
+    if ($(this).scrollTop() > 150) {
+        $("#right-nav").fadeIn(300)
+    } else {
+        $("#right-nav").fadeOut(300)
+    }
+});
+function toTop() {
+    $("body,html").animate({scrollTop: 0}, 200)
+}
 function isEmail(c) {
     var a = false;
     var b = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
@@ -597,6 +625,19 @@ function gblen(c) {
         }
     }
     return a
+}
+function GetRandomNum(a, c) {
+    var d = c - a;
+    var b = Math.random();
+    return (a + Math.round(b * d))
+}
+function getQueryString(a) {
+    var b = new RegExp("(^|&)" + a + "=([^&]*)(&|$)", "i");
+    var c = window.location.search.substr(1).match(b);
+    if (c != null) {
+        return unescape(c[2])
+    }
+    return null
 }
 $(function () {
     $("#agreeModalCont").height($(window).height() * 0.7)
@@ -663,17 +704,109 @@ function jumpToResult() {
     window.location.href = "/diy/view/" + cmtid
 }
 function submitDIY() {
-    if ($("#agreeChk").hasClass("fa-square-o")) {
-        $("#agreeModal").modal("show")
+    if (hasLogin) {
+        if ($("#agreeChk").hasClass("fa-square-o")) {
+            $("#agreeModal").modal("show")
+        } else {
+            $("#contract-maker").submit()
+        }
     } else {
-        $("#contract-maker").submit()
+        $("#alertLoginTipsCont").html("悦合同温馨提示：请登录后使用该功能");
+        $("#alertLoginTips").show();
+        $("#modalLogin").modal("show")
     }
-};
-//依赖jquery-placeholder.min.js
-function placeholderInit(){
-    // Invoke the plugin
-    $('input, textarea').placeholder();
 }
+var vibeDelay = 80;
+var nArr1 = new Array();
+var nArr2 = new Array();
+var nArr3 = new Array();
+var countTime = 8;
+function vibeNum() {
+    var d = $(this);
+    var c = $(this).attr("id");
+    var e = parseInt(d.html());
+    var b = c.substr(3);
+    for (var a = 0; a < countTime; a++) {
+        if (c == "num1") {
+            nArr1[a] = GetRandomNum(100, e)
+        } else {
+            if (c == "num2") {
+                nArr2[a] = GetRandomNum(100, e)
+            } else {
+                if (c == "num3") {
+                    nArr3[a] = GetRandomNum(100, e)
+                }
+            }
+        }
+    }
+    if (c == "num1") {
+        nArr1[countTime] = e
+    } else {
+        if (c == "num2") {
+            nArr2[countTime] = e
+        } else {
+            if (c == "num3") {
+                nArr3[countTime] = e
+            }
+        }
+    }
+    setTimeout("vibeNumAct('" + c + "'," + b + ",0)", vibeDelay)
+}
+function vibeNumAct(g, f, b) {
+    var a = 0;
+    var h = 0;
+    if (f == 1) {
+        a = nArr1.length;
+        h = nArr1[b]
+    } else {
+        if (f == 2) {
+            a = nArr2.length;
+            h = nArr2[b]
+        } else {
+            if (f == 3) {
+                a = nArr3.length;
+                h = nArr3[b]
+            }
+        }
+    }
+    var c = h;
+    if (c > 0) {
+        var e = "";
+        while (c > 0) {
+            var d = c % 10;
+            e = "<i>" + d + "</i>" + e;
+            c = parseInt(c / 10)
+        }
+        $("#" + g).html(e)
+    }
+    if (b <= a) {
+        b++;
+        setTimeout("vibeNumAct('" + g + "'," + f + "," + b + ")", vibeDelay)
+    }
+}
+var touliScrollLimit = 5;
+var touliInterval = 3500;
+var toulitimer = null;
 $(function () {
-    placeholderInit();
+    if ($("#tou-index-ul").length > 0) {
+        var b = $("#tou-index-ul");
+        var a = b.children();
+        if (a.length > touliScrollLimit) {
+            toulitimer = setInterval("scrollTouLi()", touliInterval);
+            $("#tou-index-ul").hover(function () {
+                if (toulitimer) {
+                    clearInterval(toulitimer)
+                }
+            }, function () {
+                toulitimer = setInterval("scrollTouLi()", touliInterval)
+            })
+        }
+    }
 });
+function scrollTouLi() {
+    var a = $("#tou-index-ul>li:last-child");
+    lasLiDom = a.remove();
+    lasLiDom.css("display", "none");
+    $("#tou-index-ul").prepend(lasLiDom);
+    lasLiDom.slideDown(350)
+};
